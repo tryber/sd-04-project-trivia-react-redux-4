@@ -13,10 +13,6 @@ class Login extends Component {
     this.props.fetchToken();
   }
 
-  handleChange() {
-    console.log('oi');
-  }
-
   render() {
     console.log(this.props.token);
     return (
