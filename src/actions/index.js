@@ -1,4 +1,4 @@
-import { requestToken } from '../services';
+import { requestTokenService } from '../services';
 import { REQUEST_TOKEN, REQUEST_TOKEN_SUCCESS, REQUEST_TOKEN_FAILURE } from './types';
 
 const requestToken = () => ({
@@ -18,7 +18,7 @@ const tokenFailure = (error) => ({
 export default function fetchToken() {
   return (dispatch) => {
     dispatch(requestToken());
-    return requestToken().then(
+    return requestTokenService().then(
       (data) => dispatch(tokenSucces(data)),
       (error) => dispatch(tokenFailure(error.message)),
     );
