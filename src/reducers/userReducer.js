@@ -19,6 +19,6 @@ const userReducer = (state = initialState, { type, player }) => {
     default:
       return state;
   }
-}
+};
 
 export default userReducer;

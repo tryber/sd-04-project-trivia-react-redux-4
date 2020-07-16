@@ -1,6 +1,8 @@
 import { USER_LOGIN } from './types';
 
-export default userLogin = (infos) => ({
+const userLogin = (infos) => ({
   type: USER_LOGIN,
   player: infos,
 });
+
+export default userLogin
