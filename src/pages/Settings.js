@@ -49,7 +49,7 @@ class Settings extends Component {
     return (
       <div>
         <label htmlFor="type">Type</label>
-        <select name="type" id="type">
+        <select data-testid="question-type-dropdown" name="type" id="type">
           <option>Choose your option</option>
           <option>All</option>
           <option value="multiple">Multiple choice</option>
