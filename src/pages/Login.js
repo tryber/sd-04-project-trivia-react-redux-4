@@ -28,6 +28,11 @@ class Login extends Component {
     }
   }
 
+  fetchUser() {
+    this.props.userLogin(this.state);
+    this.props.fetchToken();
+  }
+
   renderInputEmail() {
     const { gravatarEmail } = this.state;
     return (
@@ -43,11 +48,6 @@ class Login extends Component {
         />
       </span>
     );
-  }
-
-  fetchUser() {
-    userLogin(this.state);
-    fetchToken();
   }
 
   renderInputName() {
