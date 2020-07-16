@@ -6,40 +6,78 @@ import fetchToken from '../actions';
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
+
+    this.state = {
+      name: '',
+      gravatarEmail: '',
+      disableButton: true,
+    }
   }
 
   componentDidMount() {
     this.props.fetchToken();
   }
 
+  async handleChange(e, field) {
+    await this.setState({
+      [field]: e.target.value,
+    });
+    const { name, gravatarEmail } = this.state;
+    if (name && gravatarEmail) {
+      this.setState({ disableButton: false });
+    } else {
+      this.setState({ disableButton: true });
+    }
+  }
+
+  renderInputName() {
+    const { name } = this.state;
+    return (
+      <span>
+        <label htmlFor="input-name">User</label>
+        <input
+          id="input-name"
+          onChange={ (e) => this.handleChange(e, 'name') }
+          data-testid="input-player-name"
+          type="text"
+          value={name}
+          required
+        />
+      </span>
+    )
+  }
+
+  renderInputEmail() {
+    const { gravatarEmail } = this.state;
+    return (
+      <span>
+        <label htmlFor="input-gravatar-email">Email</label>
+        <input
+          id="input-gravatar-email"
+          onChange={ (e) => this.handleChange(e, 'gravatarEmail') }
+          data-testid="input-gravatar-email"
+          type="text"
+          value={gravatarEmail}
+          required
+        />
+      </span>
+    );
+  }
+
   render() {
-    console.log(this.props.token);
+    const { disableButton } = this.state;
     return (
       <div>
-        <h1>Renderiza Aqui!</h1>
-        <h2>Jessica Rules!</h2>
-        <label htmlFor="input-name">User</label>
-        <input id="input-name" onChange={'a'} data-testid="input-player-name" type="text" />
-        <label htmlFor="input-email">Email</label>
-        <input id="input-email" onChange={'a'} data-testid="input-gravatar-email" type="email" />
-        <button data-testid="btn-play">Login</button>
+        {this.renderInputName()}
+        {this.renderInputEmail()}
+        <button type="button" data-testid="btn-play" disabled={disableButton}>Login</button>
       </div>
     );
   }
 }
 
-const mapState = (state) => ({
-  token: state.apiReducer.token,
-});
-
 const mapDispatch = (dispatch) => ({
   fetchToken: () => dispatch(fetchToken()),
 });
 
-Login.propTypes = {
-  token: PropTypes.string.isRequired,
-  fetchToken: PropTypes.func.isRequired,
-};
-
-export default connect(mapState, mapDispatch)(Login);
+export default connect(null, mapDispatch)(Login);
