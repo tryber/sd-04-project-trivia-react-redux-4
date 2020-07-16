@@ -39,6 +39,6 @@ const mapState = (state) => ({
 
 export default connect(mapState)(Header);
 
-Header.proptypes = {
-  player: Proptypes.objectOf(PropTypes.any).isRequired,
+Header.propTypes = {
+  player: PropTypes.objectOf(PropTypes.any).isRequired,
 };
