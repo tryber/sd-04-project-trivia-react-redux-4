@@ -63,14 +63,22 @@ class Login extends Component {
 
   render() {
     const { disableButton } = this.state;
+    const { fetchToken } = this.props;
     return (
       <div>
         {this.renderInputName()}
         {this.renderInputEmail()}
-        <button type="button" data-testid="btn-play" disabled={disableButton}>
+        <button
+          onClick={() => fetchToken()}
+          type="button"
+          data-testid="btn-play"
+          disabled={disableButton}
+        >
           Login
         </button>
-        <Link data-testid="btn-settings" to="/settings">Settings</Link>
+        <Link data-testid="btn-settings" to="/settings">
+          Settings
+        </Link>
       </div>
     );
   }
