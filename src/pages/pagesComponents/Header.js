@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MD5 from 'crypto-js/md5';
-import Proptypes from 'prop-types';
-import { prototype } from 'mocha';
+import PropTypes from 'prop-types';
 
 class Header extends Component {
   constructor(props) {
@@ -40,6 +39,6 @@ const mapState = (state) => ({
 
 export default connect(mapState)(Header);
 
-Header.Proptypes = {
-  player: Proptypes.objectOf(PropTypes.string).isRequired,
+Header.proptypes = {
+  player: Proptypes.objectOf(PropTypes.any).isRequired,
 };

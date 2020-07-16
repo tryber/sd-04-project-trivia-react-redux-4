@@ -5,4 +5,4 @@ const userLogin = (infos) => ({
   player: infos,
 });
 
-export default userLogin
+export default userLogin;
