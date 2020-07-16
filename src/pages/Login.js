@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import fetchToken from '../actions';
-import userLogin from '../actions/userAction';
+import { userLogin } from '../actions/userAction';
 
 class Login extends Component {
   constructor(props) {
@@ -72,9 +72,9 @@ class Login extends Component {
     return (
       <div>
         <Link to="/settings" data-testid="btn-settings">Settings</Link>
+        <br />
         {this.renderInputName()}
         {this.renderInputEmail()}
-
         <Link to="/game">
           <button
             type="button"
