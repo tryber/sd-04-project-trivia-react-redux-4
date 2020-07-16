@@ -24,7 +24,6 @@ class Game extends Component {
             {/* <h3>{question[0].incorrect_answers}</h3> */}
             {console.log(questions[0].type)};
             {console.log(questionIndex)};
-            {console.log(answer)};
           </div>
         </div>
       </div>
