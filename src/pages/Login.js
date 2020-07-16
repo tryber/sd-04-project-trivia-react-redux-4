@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import fetchToken from '../actions';
 import userLogin from '../actions/userAction';
-import { Link } from 'react-router-dom';
 
 class Login extends Component {
   constructor(props) {
@@ -28,23 +28,6 @@ class Login extends Component {
     }
   }
 
-  renderInputName() {
-    const { name } = this.state;
-    return (
-      <span>
-        <label htmlFor="input-name">User</label>
-        <input
-          id="input-name"
-          onChange={(e) => this.handleChange(e, 'name')}
-          data-testid="input-player-name"
-          type="text"
-          value={name}
-          required
-        />
-      </span>
-    );
-  }
-
   renderInputEmail() {
     const { gravatarEmail } = this.state;
     return (
@@ -63,9 +46,25 @@ class Login extends Component {
   }
 
   fetchUser() {
-    const { userLogin, fetchToken } = this.props;
     userLogin(this.state);
     fetchToken();
+  }
+
+  renderInputName() {
+    const { name } = this.state;
+    return (
+      <span>
+        <label htmlFor="input-name">User</label>
+        <input
+          id="input-name"
+          onChange={(e) => this.handleChange(e, 'name')}
+          data-testid="input-player-name"
+          type="text"
+          value={name}
+          required
+        />
+      </span>
+    );
   }
 
   render() {
@@ -96,6 +95,7 @@ const mapDispatch = (dispatch) => ({
 
 Login.propTypes = {
   fetchToken: PropTypes.func.isRequired,
+  userLogin: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatch)(Login);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Header from './pagesComponents/Header';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-type';
+import Header from './pagesComponents/Header';
 
 class Game extends Component {
   constructor(props) {
@@ -31,8 +32,12 @@ class Game extends Component {
 }
 
 const mapState = (state) => ({
-  token: state.apiReducer.token,
+  // token: state.apiReducer.token,
   questions: state.apiReducer.questions,
 });
+
+Game.propTypes = {
+  questions: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default connect(mapState)(Game);
