@@ -27,7 +27,6 @@ class Game extends Component {
             {console.log(questions[0].type)};{console.log(questionIndex)};
           </div>
         </div>
-        <Link to="/feedback">go here</Link>
       </div>
     );
   }
