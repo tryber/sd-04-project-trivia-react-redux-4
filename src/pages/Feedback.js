@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Header from './pagesComponents/Header';
 
 class Feedback extends Component {
   handleFeedback() {
     const { assertions } = this.props.player;
     if (assertions >= 3) return 'Mandou Bem!';
-    else return 'Podia ser melhor...';
+    return 'Podia ser melhor...';
   }
 
   render() {
