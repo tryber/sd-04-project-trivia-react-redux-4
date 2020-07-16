@@ -18,8 +18,8 @@ class Header extends Component {
     return (
       <div>
         <div className="left-header">
-          <img src={this.setGravatar()} alt="User gravatar" dataTestid="header-profile-picture" />
-          <h2 dataTestid="header-player-name">Jogador: {name}</h2>
+          <img src={this.setGravatar()} alt="User gravatar" data-testid="header-profile-picture" />
+          <h2 data-testid="header-player-name">Jogador: {name}</h2>
         </div>
         <div className="right-header">
           <p data-testid="header-score">Score: {score}</p>

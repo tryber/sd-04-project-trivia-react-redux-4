@@ -71,6 +71,7 @@ class Login extends Component {
     const { disableButton } = this.state;
     return (
       <div>
+        <Link to="/settings" data-testid="btn-settings">Settings</Link>
         {this.renderInputName()}
         {this.renderInputEmail()}
 

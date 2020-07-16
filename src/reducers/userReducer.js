@@ -1,9 +1,9 @@
-import { USER_LOGIN } from '../actions/types';
+import { USER_LOGIN, USER_SCORE } from '../actions/types';
 
 const initialState = {
   player: {
     name: '',
-    assertions: 2,
+    assertions: 3,
     score: 0,
     gravatarEmail: '',
   },
@@ -19,6 +19,15 @@ const userReducer = (state = initialState, { type, player }) => {
       return {
         ...state,
         player: { ...state.player, name: player.name, gravatarEmail: player.gravatarEmail },
+      };
+    case USER_SCORE:
+      localStorage.setItem('player', JSON.stringify({
+        ...state,
+        player: { ...state.player, score: player.score, assertions: player.assertions },
+      }));
+      return {
+        ...state,
+        player: { ...state.player, score: player.score, assertions: player.assertions },
       };
     default:
       return state;
