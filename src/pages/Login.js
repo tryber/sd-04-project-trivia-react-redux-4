@@ -4,11 +4,6 @@ import PropTypes from 'prop-types';
 import fetchToken from '../actions';
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
   componentDidMount() {
     this.props.fetchToken();
   }
