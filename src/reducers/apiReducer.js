@@ -9,6 +9,7 @@ const apiReducer = (state = initialState, action) => {
     case REQUEST_TOKEN:
       return { ...state };
     case REQUEST_TOKEN_SUCCESS:
+      localStorage.setItem('token', JSON.stringify(action.token.token));
       return { ...state, token: action.token };
     case REQUEST_TOKEN_FAILURE:
       return { ...state, error: action.error };
