@@ -12,6 +12,8 @@ class Game extends Component {
       questionIndex: 0,
       randomIndexes: [],
     };
+
+    this.getRandomIndex = this.getRandomIndex.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -21,7 +23,7 @@ class Game extends Component {
     }
   }
 
-  getRandomIndex(length){
+  getRandomIndex(length) {
     return Math.round(Math.random() * length);
   }
 
@@ -43,7 +45,7 @@ class Game extends Component {
   render() {
     const { questions } = this.props;
     const { questionIndex, randomIndexes } = this.state;
-    if (questions.length < 1) return <div>Loading...</div>
+    if (questions.length < 1) return <div>Loading...</div>;
     return (
       <div>
         <Header />
