@@ -2,13 +2,13 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import { Login, Game, Ranking, Feedback, Settings } from './pages';
-import Header from './components/Header';
+import ComunHeader from './components/ComunHeader';
 import Footer from './components/Footer';
 
 export default function App() {
   return (
     <div className="App">
-      <Header />
+      <ComunHeader />
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/game" component={Game} />
