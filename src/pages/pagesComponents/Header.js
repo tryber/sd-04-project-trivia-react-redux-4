@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MD5 from 'crypto-js/md5';
 import PropTypes from 'prop-types';
-import '../pages.css';
 
 class Header extends Component {
   setGravatar() {
