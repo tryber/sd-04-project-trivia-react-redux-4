@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import RankList from './pagesComponents/RankList';
+import PropTypes from 'prop-types';
+// import RankList from './pagesComponents/RankList';
 
 const Ranking = (props) => {
   const { name, score } = props;
@@ -25,5 +26,10 @@ const mapState = (state) => ({
   name: state.userReducer.player.name,
   score: state.userReducer.player.score,
 });
+
+Ranking.propTypes = {
+  name: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
+};
 
 export default connect(mapState)(Ranking);
