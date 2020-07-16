@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MD5 from 'crypto-js/md5';
 import Proptypes from 'prop-types';
+import { prototype } from 'mocha';
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   setGravatar() {
     const { gravatarEmail } = this.props.player;
     console.log(gravatarEmail);
@@ -35,10 +40,6 @@ const mapState = (state) => ({
 
 export default connect(mapState)(Header);
 
-Header.Proptype = {
-  player: Proptypes.objectOf({
-    gravatarEmail: Proptypes.string.isRequired,
-    name: Proptypes.string.isRequired,
-    score: Proptypes.string.isRequired,
-  }).isRequired,
+Header.Proptypes = {
+  player: Proptypes.objectOf(PropTypes.string).isRequired,
 };
