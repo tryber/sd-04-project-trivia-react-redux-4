@@ -6,7 +6,6 @@ import fetchToken from '../actions';
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
