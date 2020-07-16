@@ -6,7 +6,7 @@ import Proptypes from 'prop-types';
 class Header extends Component {
   setGravatar() {
     const { gravatarEmail } = this.props.player;
-    console.log(gravatarEmail)
+    console.log(gravatarEmail);
     const gravatarUrl = 'https://www.gravatar.com/avatar/';
     const Hash = MD5(gravatarEmail);
     return `${gravatarUrl}${Hash}`;
@@ -14,7 +14,7 @@ class Header extends Component {
 
   render() {
     const { name, score } = this.props.player;
-    console.log(this.setGravatar())
+    console.log(this.setGravatar());
     return (
       <div>
         <div className="left-header">
@@ -36,5 +36,9 @@ const mapState = (state) => ({
 export default connect(mapState)(Header);
 
 Header.Proptype = {
-  player: Proptypes.objectOf(Proptypes.string).isRequired,
-} 
+  player: Proptypes.objectOf({
+    gravatarEmail: Proptypes.string.isRequired,
+    name: Proptypes.string.isRequired,
+    score: Proptypes.string.isRequired,
+  }).isRequired,
+};

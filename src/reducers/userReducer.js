@@ -4,7 +4,7 @@ const initialState = {
   player: {
     name: 'jess',
     assertions: '',
-    score: 0,
+    score: '0',
     gravatarEmail: 'jessicatavareseel@gmail.com',
   },
 };
@@ -14,10 +14,10 @@ const userReducer = (state = initialState, { type, player }) => {
     case USER_LOGIN:
       return {
         ...state,
-        player: { ...player, name: player.name, gravatarEmail: player.gravatarEmail}
-      }
+        player: { ...player, name: player.name, gravatarEmail: player.gravatarEmail },
+      };
     default:
-      return state
+      return state;
   }
 }
 
