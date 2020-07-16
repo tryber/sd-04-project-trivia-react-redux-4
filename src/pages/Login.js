@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import fetchToken from '../actions';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
   constructor(props) {
@@ -70,7 +71,10 @@ class Login extends Component {
       <div>
         {this.renderInputName()}
         {this.renderInputEmail()}
-        <button type="button" data-testid="btn-play" disabled={disableButton}>Login</button>
+        <button type="button" data-testid="btn-play" disabled={disableButton}>
+          Login
+        </button>
+        <Link to="/settings">Settings</Link>
       </div>
     );
   }

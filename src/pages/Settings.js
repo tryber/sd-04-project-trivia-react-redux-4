@@ -1,37 +1,75 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Settings extends Component {
-  state = {
-    categories: [],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      categories: [],
+    };
+    this.selectCategory = this.selectCategory.bind(this);
+    this.selectDifficulty = this.selectDifficulty.bind(this);
+    this.selectType = this.selectType.bind(this);
+  }
+
+  selectCategory() {
+    const { categories } = this.state;
+    return (
+      <div>
+        <label htmlFor="category">Category</label>
+        <select name="category" id="category">
+          <option>Choose your option</option>
+          <option>All</option>
+          {categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
+        </select>
+      </div>
+    );
+  }
+
+  selectDifficulty() {
+    return (
+      <div>
+        <label htmlFor="difficulty">Difficulty</label>
+        <select name="difficulty" id="difficulty">
+          <option>Choose your option</option>
+          <option>All</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+    );
+  }
+
+  selectType() {
+    return (
+      <div>
+        <label htmlFor="type">Type</label>
+        <select name="type" id="type">
+          <option>Choose your option</option>
+          <option>All</option>
+          <option value="multiple">Multiple choice</option>
+          <option value="boolean">True or False</option>
+        </select>
+      </div>
+    );
+  }
+
   render() {
     return (
       <div>
         <h2>Settings page</h2>
+        {this.selectCategory()}
+        {this.selectDifficulty()}
+        {this.selectType()}
+        <Link to="/">Back</Link>
       </div>
     );
   }
 }
-
-const select = () => {
-  return (
-    <form>
-      <label htmlFor="category">Select Category:</label>
-      <select id="category">
-        <option></option>
-      </select>
-
-      <label htmlFor="difficulty">Select Difficulty:</label>
-      <select id="difficulty">
-        <option></option>
-      </select>
-
-      <label htmlFor="type">Select Type:</label>
-      <select id="type">
-        <option></option>
-      </select>
-    </form>
-  );
-};
 
 export default Settings;
