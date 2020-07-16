@@ -69,7 +69,6 @@ class Login extends Component {
 
   render() {
     const { disableButton } = this.state;
-    const { ftchToken } = this.props;
     return (
       <div>
         {this.renderInputName()}
@@ -84,9 +83,6 @@ class Login extends Component {
           >
             Login
           </button>
-
-    
-
         </Link>
       </div>
     );
@@ -99,7 +95,6 @@ const mapDispatch = (dispatch) => ({
 });
 
 Login.propTypes = {
-
   fetchToken: PropTypes.func.isRequired,
   userLogin: PropTypes.func.isRequired,
 };
