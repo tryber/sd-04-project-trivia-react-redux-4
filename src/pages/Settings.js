@@ -67,7 +67,7 @@ class Settings extends Component {
   render() {
     return (
       <div>
-        <h2>Settings page</h2>
+        <h2 data-testid="settings-title">Settings page</h2>
         {this.selectCategory()}
         {this.selectDifficulty()}
         {this.selectType()}

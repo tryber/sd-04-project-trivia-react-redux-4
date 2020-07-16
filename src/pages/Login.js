@@ -15,10 +15,6 @@ class Login extends Component {
     };
   }
 
-  componentDidMount() {
-    this.props.fetchToken();
-  }
-
   async handleChange(e, field) {
     await this.setState({
       [field]: e.target.value,
@@ -74,7 +70,7 @@ class Login extends Component {
         <button type="button" data-testid="btn-play" disabled={disableButton}>
           Login
         </button>
-        <Link to="/settings">Settings</Link>
+        <Link data-testid="btn-settings" to="/settings">Settings</Link>
       </div>
     );
   }
