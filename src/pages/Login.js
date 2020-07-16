@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import fetchToken from '../actions';
+import userLogin from '../actions/userAction';
 
 class Login extends Component {
   constructor(props) {
@@ -27,21 +28,9 @@ class Login extends Component {
     }
   }
 
-  renderInputName() {
-    const { name } = this.state;
-    return (
-      <span>
-        <label htmlFor="input-name">User</label>
-        <input
-          id="input-name"
-          onChange={(e) => this.handleChange(e, 'name')}
-          data-testid="input-player-name"
-          type="text"
-          value={name}
-          required
-        />
-      </span>
-    );
+  fetchUser() {
+    this.props.userLogin(this.state);
+    this.props.fetchToken();
   }
 
   renderInputEmail() {
@@ -61,23 +50,39 @@ class Login extends Component {
     );
   }
 
+  renderInputName() {
+    const { name } = this.state;
+    return (
+      <span>
+        <label htmlFor="input-name">User</label>
+        <input
+          id="input-name"
+          onChange={(e) => this.handleChange(e, 'name')}
+          data-testid="input-player-name"
+          type="text"
+          value={name}
+          required
+        />
+      </span>
+    );
+  }
+
   render() {
     const { disableButton } = this.state;
-    const { ftchToken } = this.props;
     return (
       <div>
         {this.renderInputName()}
         {this.renderInputEmail()}
-        <button
-          onClick={() => ftchToken()}
-          type="button"
-          data-testid="btn-play"
-          disabled={disableButton}
-        >
-          Login
-        </button>
-        <Link data-testid="btn-settings" to="/settings">
-          Settings
+
+        <Link to="/game">
+          <button
+            type="button"
+            data-testid="btn-play"
+            disabled={disableButton}
+            onClick={() => this.fetchUser()}
+          >
+            Login
+          </button>
         </Link>
       </div>
     );
@@ -86,10 +91,12 @@ class Login extends Component {
 
 const mapDispatch = (dispatch) => ({
   fetchToken: () => dispatch(fetchToken()),
+  userLogin: (info) => dispatch(userLogin(info)),
 });
 
 Login.propTypes = {
-  ftchToken: PropTypes.func.isRequired,
+  fetchToken: PropTypes.func.isRequired,
+  userLogin: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatch)(Login);
