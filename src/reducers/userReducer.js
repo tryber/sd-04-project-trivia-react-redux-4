@@ -2,10 +2,10 @@ import { USER_LOGIN } from '../actions/types';
 
 const initialState = {
   player: {
-    name: 'jess',
+    name: '',
     assertions: '',
     score: '0',
-    gravatarEmail: 'jessicatavareseel@gmail.com',
+    gravatarEmail: '',
   },
 };
 
