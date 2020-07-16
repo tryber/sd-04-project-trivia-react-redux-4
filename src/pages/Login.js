@@ -75,8 +75,14 @@ class Login extends Component {
         {this.renderInputName()}
         {this.renderInputEmail()}
         <Link to="/game">
-        <button type="button" data-testid="btn-play" disabled={disableButton}
-          onClick={() => this.fetchUser()}>Login</button>
+          <button
+            type="button"
+            data-testid="btn-play"
+            disabled={disableButton}
+            onClick={() => this.fetchUser()}
+          >
+            Login
+          </button>
         </Link>
       </div>
     );
@@ -85,7 +91,7 @@ class Login extends Component {
 
 const mapDispatch = (dispatch) => ({
   fetchToken: () => dispatch(fetchToken()),
-  userLogin: (info) => dispatch(userLogin(info))
+  userLogin: (info) => dispatch(userLogin(info)),
 });
 
 Login.propTypes = {
