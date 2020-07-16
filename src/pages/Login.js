@@ -63,13 +63,13 @@ class Login extends Component {
 
   render() {
     const { disableButton } = this.state;
-    const { fetchToken } = this.props;
+    const { ftchToken } = this.props;
     return (
       <div>
         {this.renderInputName()}
         {this.renderInputEmail()}
         <button
-          onClick={() => fetchToken()}
+          onClick={() => ftchToken()}
           type="button"
           data-testid="btn-play"
           disabled={disableButton}
@@ -89,7 +89,7 @@ const mapDispatch = (dispatch) => ({
 });
 
 Login.propTypes = {
-  fetchToken: PropTypes.func.isRequired,
+  ftchToken: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatch)(Login);
