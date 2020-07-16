@@ -63,6 +63,7 @@ class Login extends Component {
 
   render() {
     const { disableButton } = this.state;
+    const { fetchToken } = this.props;
     return (
       <div>
         {this.renderInputName()}
