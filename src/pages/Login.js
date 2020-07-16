@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import fetchToken from '../actions';
+import userLogin from '../actions/userAction';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
   constructor(props) {
@@ -12,10 +14,6 @@ class Login extends Component {
       gravatarEmail: '',
       disableButton: true,
     };
-  }
-
-  componentDidMount() {
-    this.props.fetchToken();
   }
 
   async handleChange(e, field) {
@@ -64,13 +62,22 @@ class Login extends Component {
     );
   }
 
+  fetchUser() {
+    const { userLogin, fetchToken } = this.props;
+    userLogin(this.state);
+    fetchToken();
+  }
+
   render() {
     const { disableButton } = this.state;
     return (
       <div>
         {this.renderInputName()}
         {this.renderInputEmail()}
-        <button type="button" data-testid="btn-play" disabled={disableButton}>Login</button>
+        <Link to="/game">
+        <button type="button" data-testid="btn-play" disabled={disableButton}
+          onClick={() => this.fetchUser()}>Login</button>
+        </Link>
       </div>
     );
   }
@@ -78,6 +85,7 @@ class Login extends Component {
 
 const mapDispatch = (dispatch) => ({
   fetchToken: () => dispatch(fetchToken()),
+  userLogin: (info) => dispatch(userLogin(info))
 });
 
 Login.propTypes = {
