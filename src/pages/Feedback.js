@@ -33,7 +33,7 @@ const mapState = (state) => ({
 });
 
 Feedback.propTypes = {
-  player: PropTypes.objectOf(PropTypes.string).isRequired,
+  player: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default connect(mapState)(Feedback);
