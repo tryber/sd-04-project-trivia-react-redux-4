@@ -19,10 +19,10 @@ class Header extends Component {
       <div>
         <div className="left-header">
           <img src={this.setGravatar()} alt="User gravatar" dataTestid="header-profile-picture" />
-          <h2 dataTestid="header-player-name">{name}</h2>
+          <h2 dataTestid="header-player-name">Jogador: {name}</h2>
         </div>
         <div className="right-header">
-          <p>Score: {score}</p>
+          <p data-testid="header-score">Score: {score}</p>
         </div>
       </div>
     );

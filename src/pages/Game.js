@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Header from './pagesComponents/Header';
 
@@ -26,6 +27,7 @@ class Game extends Component {
             {console.log(questions[0].type)};{console.log(questionIndex)};
           </div>
         </div>
+        <Link to='/feedback'>go here</Link>
       </div>
     );
   }
