@@ -4,10 +4,6 @@ import MD5 from 'crypto-js/md5';
 import PropTypes from 'prop-types';
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   setGravatar() {
     const { gravatarEmail } = this.props.player;
     console.log(gravatarEmail);
