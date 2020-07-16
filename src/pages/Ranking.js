@@ -2,15 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import RankList from './pagesComponents/RankList';
+import RankList from './pagesComponents/RankList';
 
 const Ranking = (props) => {
   const { name, score } = props;
+  const rankLine =
+    localStorage.getItem('player') !== null
+      ? JSON.parse(localStorage.getItem('player'))
+      : { player: { name: '', score: '', picture: '' } };
   return (
     <div>
       <div>
-        {/* <img src={} alt="gravatar-email" /> */}
-
+        {rankLine.map((player, index) => (
+          <RankList key={player + index} player={player} index={index} />
+        ))}
         <p>{name}</p>
         <p>{score}</p>
       </div>

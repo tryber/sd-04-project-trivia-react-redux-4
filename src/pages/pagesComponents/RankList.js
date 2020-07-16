@@ -1,9 +1,11 @@
 import React from 'react';
 
-function RankList() {
+function RankList({ player }) {
   return (
     <div>
-      <p>oi</p>
+      <img src={player.picture} />
+      <p>{player.name}</p>
+      <p>{player.score}</p>
     </div>
   );
 }
