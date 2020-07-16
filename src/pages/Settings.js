@@ -31,6 +31,8 @@ class Settings extends Component {
   }
 
   selectDifficulty() {
+    const { categories } = this.state;
+    console.log(categories);
     return (
       <div>
         <label htmlFor="difficulty">Difficulty</label>
@@ -46,6 +48,8 @@ class Settings extends Component {
   }
 
   selectType() {
+    const { categories } = this.state;
+    console.log(categories);
     return (
       <div>
         <label htmlFor="type">Type</label>
