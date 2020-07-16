@@ -11,7 +11,7 @@ class Login extends Component {
       name: '',
       gravatarEmail: '',
       disableButton: true,
-    }
+    };
   }
 
   componentDidMount() {
@@ -37,14 +37,14 @@ class Login extends Component {
         <label htmlFor="input-name">User</label>
         <input
           id="input-name"
-          onChange={ (e) => this.handleChange(e, 'name') }
+          onChange={(e) => this.handleChange(e, 'name')}
           data-testid="input-player-name"
           type="text"
           value={name}
           required
         />
       </span>
-    )
+    );
   }
 
   renderInputEmail() {
@@ -54,7 +54,7 @@ class Login extends Component {
         <label htmlFor="input-gravatar-email">Email</label>
         <input
           id="input-gravatar-email"
-          onChange={ (e) => this.handleChange(e, 'gravatarEmail') }
+          onChange={(e) => this.handleChange(e, 'gravatarEmail')}
           data-testid="input-gravatar-email"
           type="text"
           value={gravatarEmail}
@@ -79,5 +79,9 @@ class Login extends Component {
 const mapDispatch = (dispatch) => ({
   fetchToken: () => dispatch(fetchToken()),
 });
+
+Login.propTypes = {
+  fetchToken: PropTypes.func.isRequired,
+};
 
 export default connect(null, mapDispatch)(Login);
