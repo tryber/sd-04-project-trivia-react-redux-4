@@ -7,6 +7,7 @@ class Settings extends Component {
     this.state = {
       categories: [],
     };
+
     this.selectCategory = this.selectCategory.bind(this);
     this.selectDifficulty = this.selectDifficulty.bind(this);
     this.selectType = this.selectType.bind(this);
