@@ -11,8 +11,7 @@ const saveData = (payload) => {
   const oldState = JSON.parse(localStorage.getItem('ranking'));
   const newState = { score: 0, name: payload.name, picture: payload.url, id: new Date() };
   if (oldState) return localStorage.setItem('ranking', JSON.stringify([...oldState, newState]));
-  localStorage.setItem('ranking', JSON.stringify([newState]));
-  return;
+  return localStorage.setItem('ranking', JSON.stringify([newState]));
 };
 
 export default (state = initialState, { type, payload }) => {

@@ -10,7 +10,7 @@ class Header extends Component {
     const gravatarUrl = 'https://www.gravatar.com/avatar/';
     const Hash = MD5(gravatarEmail);
     const url = `${gravatarUrl}${Hash}`;
-    rankingData({ name, url });
+    this.props.rankingData({ name, url });
     return url;
   }
 
