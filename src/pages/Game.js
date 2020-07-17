@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from './pagesComponents/Header';
 
+const getRandomIndex = (length) => {
+  return Math.round(Math.random() * length);
+}
+
 class Game extends Component {
   constructor(props) {
     super(props);
@@ -12,8 +16,6 @@ class Game extends Component {
       questionIndex: 0,
       randomIndexes: [],
     };
-
-    this.getRandomIndex = this.getRandomIndex.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -21,10 +23,6 @@ class Game extends Component {
     if (questions !== prevProps.questions && questions.length) {
       this.createAnswerIndexes();
     }
-  }
-
-  getRandomIndex(length) {
-    return Math.round(Math.random() * length);
   }
 
   randomAnswers() {
@@ -38,7 +36,7 @@ class Game extends Component {
   createAnswerIndexes() {
     const { questions } = this.props;
     const index = Object.values(questions)
-      .map((question) => this.getRandomIndex(question.incorrect_answers.length));
+      .map((question) => getRandomIndex(question.incorrect_answers.length));
     this.setState({ randomIndexes: index });
   }
 
