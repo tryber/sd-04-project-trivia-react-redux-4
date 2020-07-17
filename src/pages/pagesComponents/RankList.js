@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function RankList({ player }) {
   return (
     <div>
-      <img src={player.picture} />
+      <img src={player.picture} alt="gravatar photo" />
       <p>{player.name}</p>
       <p>{player.score}</p>
     </div>
@@ -12,7 +12,7 @@ function RankList({ player }) {
 }
 
 RankList.propTypes = {
-  player: PorpTypes.arrayOf(PropTypes.string).isRequerid,
+  player: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default RankList;
