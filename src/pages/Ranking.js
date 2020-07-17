@@ -7,7 +7,7 @@ import RankList from './pagesComponents/RankList';
 const Ranking = (props) => {
   const { name, score } = props;
   const rankLine =
-    localStorage.getItem('player') !== null
+    localStorage.getItem('ranking') !== null
       ? JSON.parse(localStorage.getItem('player'))
       : { player: { name: '', score: '', picture: '' } };
   return (
