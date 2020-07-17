@@ -3,9 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from './pagesComponents/Header';
 
-const getRandomIndex = (length) => {
-  return Math.round(Math.random() * length);
-}
+const getRandomIndex = (length) => Math.round(Math.random() * length);
 
 class Game extends Component {
   constructor(props) {
