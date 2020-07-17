@@ -53,7 +53,7 @@ class Game extends Component {
             {console.log(this.randomAnswers())}
             {this.randomAnswers().map((answer) => (
               answer === questions[questionIndex].correct_answer ?
-                <p><b>{answer}</b></p> : <p>{answer}</p>
+                <p><b data-testid="correct-answer">{answer}</b></p> : <p>{answer}</p>
             ))}
           </div>
         </div>

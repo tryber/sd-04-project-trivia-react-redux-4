@@ -12,7 +12,7 @@ const initialState = {
 const userReducer = (state = initialState, { type, player }) => {
   switch (type) {
     case USER_LOGIN:
-      localStorage.setItem('player', JSON.stringify({
+      localStorage.setItem('state', JSON.stringify({
         ...state,
         player: { ...state.player, name: player.name, gravatarEmail: player.gravatarEmail },
       }));
@@ -21,7 +21,7 @@ const userReducer = (state = initialState, { type, player }) => {
         player: { ...state.player, name: player.name, gravatarEmail: player.gravatarEmail },
       };
     case USER_SCORE:
-      localStorage.setItem('player', JSON.stringify({
+      localStorage.setItem('state', JSON.stringify({
         ...state,
         player: { ...state.player, score: player.score, assertions: player.assertions },
       }));

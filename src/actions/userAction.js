@@ -1,5 +1,6 @@
 import { USER_LOGIN } from './types';
 import { USER_SCORE } from './types';
+import { RANKING_DATA } from './types';
 
 export const userLogin = (infos) => ({
   type: USER_LOGIN,
@@ -9,4 +10,9 @@ export const userLogin = (infos) => ({
 export const userScore = (infos) => ({
   type: USER_SCORE,
   player: infos,
+});
+
+export const rankingData = (payload) => ({
+  type: RANKING_DATA,
+  payload,
 });
