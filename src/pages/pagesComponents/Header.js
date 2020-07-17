@@ -7,7 +7,6 @@ import { rankingData } from '../../actions/userAction';
 class Header extends Component {
   setGravatar() {
     const { gravatarEmail, name } = this.props.player;
-    const { rankingData } = this.props;
     const gravatarUrl = 'https://www.gravatar.com/avatar/';
     const Hash = MD5(gravatarEmail);
     const url = `${gravatarUrl}${Hash}`;
