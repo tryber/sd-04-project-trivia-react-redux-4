@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function RankList({ player }) {
   return (
@@ -9,5 +10,9 @@ function RankList({ player }) {
     </div>
   );
 }
+
+RankList.propTypes = {
+  player: PorpTypes.arrayOf(PropTypes.string).isRequerid,
+};
 
 export default RankList;

@@ -15,7 +15,7 @@ const Ranking = (props) => {
       <div>
         <h2 data-testid="ranking-title">Ranking</h2>
         {rankLine.map((player, index) => (
-          <RankList key={player + index} player={player} index={index} />
+          <RankList key={player} player={player} index={index} />
         ))}
         <p>{name}</p>
         <p>{score}</p>
