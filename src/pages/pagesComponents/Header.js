@@ -11,7 +11,7 @@ class Header extends Component {
     const gravatarUrl = 'https://www.gravatar.com/avatar/';
     const Hash = MD5(gravatarEmail);
     const url = `${gravatarUrl}${Hash}`;
-    rankingData({name, url})
+    rankingData({ name, url });
     return url;
   }
 
@@ -38,11 +38,12 @@ const mapState = (state) => ({
 });
 
 const mapDispatch = (dispatch) => ({
-  rankingData: (payload) => dispatch(rankingData(payload))
-})
+  rankingData: (payload) => dispatch(rankingData(payload)),
+});
 
 export default connect(mapState, mapDispatch)(Header);
 
 Header.propTypes = {
   player: PropTypes.objectOf(PropTypes.any).isRequired,
+  rankingData: PropTypes.func.isRequired,
 };

@@ -33,8 +33,9 @@ class Game extends Component {
 
   createAnswerIndexes() {
     const { questions } = this.props;
-    const index = Object.values(questions)
-      .map((question) => getRandomIndex(question.incorrect_answers.length));
+    const index = Object.values(questions).map((question) =>
+      getRandomIndex(question.incorrect_answers.length),
+    );
     this.setState({ randomIndexes: index });
   }
 
@@ -51,10 +52,15 @@ class Game extends Component {
             {console.log(questions[questionIndex].correct_answer)}
             {console.log(randomIndexes)}
             {console.log(this.randomAnswers())}
-            {this.randomAnswers().map((answer) => (
-              answer === questions[questionIndex].correct_answer ?
-                <p><b data-testid="correct-answer">{answer}</b></p> : <p>{answer}</p>
-            ))}
+            {this.randomAnswers().map((answer) =>
+              answer === questions[questionIndex].correct_answer ? (
+                <p>
+                  <b data-testid="correct-answer">{answer}</b>
+                </p>
+              ) : (
+                <p>{answer}</p>
+              ),
+            )}
           </div>
         </div>
       </div>
