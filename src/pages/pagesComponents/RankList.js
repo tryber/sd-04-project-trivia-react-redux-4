@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function RankList({ player }) {
   return (
     <div>
-      <img src={player.picture} alt="gravatar photo" />
+      <img src={player.picture} alt="gravatar" />
       <p>{player.name}</p>
       <p>{player.score}</p>
     </div>
