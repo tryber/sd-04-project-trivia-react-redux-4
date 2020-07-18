@@ -16,7 +16,7 @@ class Game extends Component {
       correctAnswer: '',
       incorrectAnswer: '',
       disabled: false,
-      disableNext: true,
+      hideNextButton: 'hide',
     };
   }
 
@@ -32,7 +32,7 @@ class Game extends Component {
       correctAnswer: 'green-border',
       incorrectAnswer: 'red-border',
       disabled: true,
-      disableNext: false,
+      hideNextButton: '',
     });
   }
 
@@ -88,13 +88,13 @@ class Game extends Component {
   }
 
   buttonNext() {
-    const { disableNext } = this.state;
+    const { hideNextButton } = this.state;
     return (
       <button
+        type="button"
         data-testid="btn-next"
         onClick={() => this.nextQuestion()}
-        className="btn-next"
-        disabled={disableNext}
+        className={`btn-next ${hideNextButton}`}
       >
         NEXT
       </button>
@@ -110,7 +110,8 @@ class Game extends Component {
         <Header />
         <div>
           <div>
-            <h3>{questions[questionIndex].question}</h3>
+            <h3 data-testid="question-category">{questions[questionIndex].category}</h3>
+            <h4 data-testid="question-text">{questions[questionIndex].question}</h4>
             {console.log(questions[questionIndex].correct_answer)}
             {console.log(randomIndexes)}
             {console.log(this.randomAnswers())}
