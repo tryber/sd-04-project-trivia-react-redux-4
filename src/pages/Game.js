@@ -87,6 +87,23 @@ class Game extends Component {
     this.setState({ randomIndexes: index });
   }
 
+  nextQuestion() {
+    const { questionIndex } = this.state;
+    const { history } = this.props;
+    if (questionIndex === 4) {
+      history.push('/feedback');
+    } else {
+      this.setState({
+        timer: 30,
+        questionIndex: questionIndex + 1,
+        correctAnswer: '',
+        incorrectAnswer: '',
+        disabled: false,
+        hideNextButton: 'hide',
+      });
+    }
+  }
+
   buttonNext() {
     const { hideNextButton } = this.state;
     return (
@@ -132,6 +149,7 @@ const mapState = (state) => ({
 
 Game.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.object).isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default connect(mapState)(Game);
