@@ -13,6 +13,9 @@ class Game extends Component {
       timer: 30,
       questionIndex: 0,
       randomIndexes: [],
+      correctAnswer: '',
+      incorrectAnswer: '',
+      disabled: false,
     };
   }
 
@@ -23,11 +26,55 @@ class Game extends Component {
     }
   }
 
+  changeStatusAnswers() {
+    this.setState({
+      correctAnswer: 'green-border',
+      incorrectAnswer: 'red-border',
+      disabled: true,
+    });
+  }
+
+  correctAnswer() {
+    const { questions } = this.props;
+    const { correctAnswer, disabled, questionIndex } = this.state;
+    return (
+      <li key='6'>
+        <button 
+          type="button"
+          data-testid="correct-answer"
+          disabled={disabled}
+          className={`answer-button ${correctAnswer}`}
+          onClick={() => this.changeStatusAnswers()}
+        >
+          {questions[questionIndex].correct_answer}
+        </button>
+      </li>
+    );
+  }
+
+  incorrectAnswers(answer, index) {
+    const { incorrectAnswer, disabled } = this.state;
+    return (
+      <li key={index}>
+        <button
+          type="button"
+          data-testid={`wrong-answer-${index}`}
+          disabled={disabled}
+          className={`answer-button ${incorrectAnswer}`}
+          onClick={() => this.changeStatusAnswers()}
+        >
+          {answer}
+        </button>
+      </li>
+    );
+  }
+
   randomAnswers() {
     const { questions } = this.props;
     const { randomIndexes, questionIndex } = this.state;
-    const answers = questions[questionIndex].incorrect_answers.map((answer) => answer);
-    answers.splice(randomIndexes[questionIndex], 0, questions[questionIndex].correct_answer);
+    const answers = questions[questionIndex].incorrect_answers
+      .map((answer, index) => this.incorrectAnswers(answer, index));
+    answers.splice(randomIndexes[questionIndex], 0, this.correctAnswer());
     return answers;
   }
 
@@ -51,10 +98,9 @@ class Game extends Component {
             {console.log(questions[questionIndex].correct_answer)}
             {console.log(randomIndexes)}
             {console.log(this.randomAnswers())}
-            {this.randomAnswers().map((answer) => (
-              answer === questions[questionIndex].correct_answer ?
-                <p><b>{answer}</b></p> : <p>{answer}</p>
-            ))}
+            <ul>
+              {this.randomAnswers()}
+            </ul>
           </div>
         </div>
       </div>

@@ -15,6 +15,21 @@
   border: 1px solid green;
 }
 
+.answer-button {
+  background-color: white;
+  border-radius: 3px;
+  border-width: 1px;
+  cursor: pointer;
+  font-weight: 900;
+  margin-bottom: 10px;
+  padding: 7px 12px;
+  width: 300px;
+}
+
+ul {
+  list-style: none;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: shake infinite 0.82s cubic-bezier(.36,.07,.19,.97) both;
