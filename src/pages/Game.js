@@ -38,8 +38,8 @@ class Game extends Component {
     const { questions } = this.props;
     const { correctAnswer, disabled, questionIndex } = this.state;
     return (
-      <li key='6'>
-        <button 
+      <li key="6">
+        <button
           type="button"
           data-testid="correct-answer"
           disabled={disabled}
