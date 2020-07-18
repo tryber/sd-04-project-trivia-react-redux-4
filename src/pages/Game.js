@@ -96,7 +96,7 @@ class Game extends Component {
         className="btn-next"
         disabled={disableNext}
       >
-        {`Next >>`}
+        NEXT
       </button>
     );
   }
