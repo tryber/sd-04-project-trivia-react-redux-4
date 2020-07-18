@@ -16,6 +16,7 @@ class Game extends Component {
       correctAnswer: '',
       incorrectAnswer: '',
       disabled: false,
+      disableNext: true,
     };
   }
 
@@ -31,6 +32,7 @@ class Game extends Component {
       correctAnswer: 'green-border',
       incorrectAnswer: 'red-border',
       disabled: true,
+      disableNext: false,
     });
   }
 
@@ -85,6 +87,20 @@ class Game extends Component {
     this.setState({ randomIndexes: index });
   }
 
+  buttonNext() {
+    const { disableNext } = this.state;
+    return (
+      <button
+        data-testid="btn-next"
+        onClick={() => this.nextQuestion()}
+        className="btn-next"
+        disabled={disableNext}
+      >
+        {`Next >>`}
+      </button>
+    );
+  }
+
   render() {
     const { questions } = this.props;
     const { questionIndex, randomIndexes } = this.state;
@@ -101,6 +117,7 @@ class Game extends Component {
             <ul>
               {this.randomAnswers()}
             </ul>
+            {this.buttonNext()}
           </div>
         </div>
       </div>
