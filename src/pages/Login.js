@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import fetchToken from '../actions';
 import { userLogin } from '../actions/userAction';
+import '../styles/Login.css';
 
 class Login extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class Login extends Component {
     const { gravatarEmail } = this.state;
     return (
       <span>
-        <label htmlFor="input-gravatar-email">Email</label>
+        <label className="label" htmlFor="input-gravatar-email">Email</label>
         <input
           id="input-gravatar-email"
           onChange={(e) => this.handleChange(e, 'gravatarEmail')}
@@ -54,7 +55,7 @@ class Login extends Component {
     const { name } = this.state;
     return (
       <span>
-        <label htmlFor="input-name">User</label>
+        <label className="label" htmlFor="input-name">User</label>
         <input
           id="input-name"
           onChange={(e) => this.handleChange(e, 'name')}
@@ -70,21 +71,23 @@ class Login extends Component {
   render() {
     const { disableButton } = this.state;
     return (
-      <div>
-        <Link to="/settings" data-testid="btn-settings">Settings</Link>
-        <br />
-        {this.renderInputName()}
-        {this.renderInputEmail()}
-        <Link to="/game">
-          <button
-            type="button"
-            data-testid="btn-play"
-            disabled={disableButton}
-            onClick={() => this.fetchUser()}
-          >
-            Login
-          </button>
-        </Link>
+      <div className="login-page">
+        <div className="form">
+          <Link to="/settings" className="label" data-testid="btn-settings">Settings</Link>
+          <br />
+          {this.renderInputName()}
+          {this.renderInputEmail()}
+          <Link to="/game">
+            <button
+              type="button"
+              data-testid="btn-play"
+              disabled={disableButton}
+              onClick={() => this.fetchUser()}
+            >
+              Login
+            </button>
+          </Link>
+        </div>
       </div>
     );
   }

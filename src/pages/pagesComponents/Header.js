@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MD5 from 'crypto-js/md5';
 import PropTypes from 'prop-types';
+import '../../styles/Header.css';
 
 class Header extends Component {
   setGravatar() {
@@ -16,15 +17,16 @@ class Header extends Component {
     const { name, score } = this.props.player;
     console.log(this.setGravatar());
     return (
-      <div>
-        <div className="left-header">
-          <img src={this.setGravatar()} alt="User gravatar" data-testid="header-profile-picture" />
-          <h2 data-testid="header-player-name">Jogador: {name}</h2>
+      <header className="header-feedback-and-game">
+        <div>
+          <img src={this.setGravatar()} className="img-from-gravatar" alt="User gravatar" data-testid="header-profile-picture" />
+          <span data-testid="header-player-name" className="player-name">{name}</span>
         </div>
-        <div className="right-header">
-          <p data-testid="header-score">Score: {score}</p>
+        <div>
+          <span data-testid="header-score" className="player-score">{score}</span>
+          <span>Pontos</span>
         </div>
-      </div>
+      </header>
     );
   }
 }
