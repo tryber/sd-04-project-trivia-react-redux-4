@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Content extends Component {
-  constructor(props){
-    super(props);
-  }
   render() {
     return (
       <div className="App-content">
@@ -12,5 +10,9 @@ class Content extends Component {
     );
   }
 }
+
+Content.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.any).isRequired,
+};
 
 export default Content;
