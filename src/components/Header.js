@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import logo from '../trivia.png';
 
 class Header extends Component {
   render() {
     return (
       <div className="App-header">
-        <h2>TRIVIA GAME</h2>
+        <img src={logo} className="App-logo" alt="logo" />
       </div>
     );
   }
