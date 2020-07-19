@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import fetchToken from '../actions';
 import { userLogin } from '../actions/userAction';
-import imggears from '../gears.png'; 
+import imggears from '../gears.png';
 
 class Login extends Component {
   constructor(props) {
