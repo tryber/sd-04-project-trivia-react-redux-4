@@ -1,3 +1,7 @@
+body {
+  margin: 2px;
+}
+
 .App {
   text-align: center;
 }
@@ -47,7 +51,9 @@ ul {
 }
 
 .App-header {
-  height: 15vh;
+  background-color: rgb(14, 79, 153);
+  color: white;
+  height: 11vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,11 +62,60 @@ ul {
 }
 
 .App-content {
-  min-height: 70vh;
+  min-height: 82vh;
+  padding-top: 7px;
+}
+
+.App-footer {
+  background-color: rgb(161, 179, 199);
+  padding: 3px 5px;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.developed-by {
+  font-size: 14pt;
+  font-weight: 900;
+}
+
+.div-login {
+  margin: auto;
+  text-align: right;
+  width: 400px;
+}
+
+.div-inputs-login {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.span-login {
+  padding: 5px 6px;
+}
+
+.input-login {
+  padding: 4px 5px;
+}
+
+.label-login {
+  display: inline-block;
+  padding-right: 10px;
+  text-align: center  ;
+  width: 80px;
+}
+
+.img-settings {
+  width: 40px;
+}
+
+.btn-login {
+  cursor: pointer;
+  margin: 10px auto;
+  padding: 3px 1px;
+  text-align: center;
+  width: 100px;
 }
 
 @keyframes shake {
