@@ -7,7 +7,7 @@ import Header from './pagesComponents/Header';
 class Feedback extends Component {
   handleFeedback() {
     const { assertions } = this.props.player;
-    if (assertions >= 3) return 'Mandou Bem!';
+    if (assertions >= 3) return 'Mandou bem!';
     return 'Podia ser melhor...';
   }
 
