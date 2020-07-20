@@ -8,7 +8,7 @@ class Header extends Component {
     const { gravatarEmail } = this.props.player;
     console.log(gravatarEmail);
     const gravatarUrl = 'https://www.gravatar.com/avatar/';
-    const Hash = MD5(gravatarEmail);
+    const Hash = MD5(gravatarEmail.trim().toLowerCase());
     return `${gravatarUrl}${Hash}`;
   }
 
