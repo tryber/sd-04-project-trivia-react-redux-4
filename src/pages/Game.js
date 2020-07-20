@@ -43,9 +43,9 @@ class Game extends Component {
     const { timer, assertions, questionIndex } = this.state;
     const { difficulty } = this.props.questions[questionIndex];
     const { player } = this.props;
-    const dif = { hard: 3, medium: 2, easy: 1};
+    const dif = { hard: 3, medium: 2, easy: 1 };
     console.log(difficulty);
-    return player.score + (10 + (timer * dif[difficulty]));
+    return player.score + (10 + timer * dif[difficulty]);
   }
 
   timerInit() {
@@ -53,8 +53,7 @@ class Game extends Component {
       const { timer } = this.state;
       if (timer > 0) {
         this.setState((state) => ({ timer: state.timer - 1 }));
-      }
-      else {
+      } else {
         clearInterval(remainingTime);
         this.changeStatusAnswers();
       }
@@ -114,16 +113,18 @@ class Game extends Component {
   randomAnswers() {
     const { questions } = this.props;
     const { randomIndexes, questionIndex } = this.state;
-    const answers = questions[questionIndex].incorrect_answers
-      .map((answer, index) => this.incorrectAnswers(answer, index));
+    const answers = questions[questionIndex].incorrect_answers.map((answer, index) =>
+      this.incorrectAnswers(answer, index),
+    );
     answers.splice(randomIndexes[questionIndex], 0, this.correctAnswer());
     return answers;
   }
 
   createAnswerIndexes() {
     const { questions } = this.props;
-    const index = Object.values(questions)
-      .map((question) => getRandomIndex(question.incorrect_answers.length));
+    const index = Object.values(questions).map((question) =>
+      getRandomIndex(question.incorrect_answers.length),
+    );
     this.setState({ randomIndexes: index });
   }
 
@@ -171,9 +172,7 @@ class Game extends Component {
             <h3 data-testid="question-category">{questions[questionIndex].category}</h3>
             <h4 data-testid="question-text">{questions[questionIndex].question}</h4>
             {timer}
-            <ul>
-              {this.randomAnswers()}
-            </ul>
+            <ul>{this.randomAnswers()}</ul>
             {questions[questionIndex].correct_answer}
             {this.buttonNext()}
           </div>
@@ -190,11 +189,12 @@ const mapState = (state) => ({
 
 const mapDispatch = (dispatch) => ({
   userScore: (score) => dispatch(userScore(score)),
-})
+});
 
 Game.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.object).isRequired,
   history: PropTypes.objectOf(PropTypes.any).isRequired,
+  player: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default connect(mapState, mapDispatch)(Game);
