@@ -16,9 +16,7 @@ const userReducer = (state = initialState, action) => {
         'player',
         JSON.stringify({
           ...state,
-          player: {
-            ...state.player,
-            name: action.player.name,
+          player: { ...state.player, name: action.player.name,
             gravatarEmail: action.player.gravatarEmail,
           },
         }),
