@@ -13,6 +13,10 @@ class Game extends Component {
       timer: 30,
       questionIndex: 0,
       randomIndexes: [],
+      correctAnswer: '',
+      incorrectAnswer: '',
+      disabled: false,
+      hideNextButton: 'hide',
     };
   }
 
@@ -23,11 +27,56 @@ class Game extends Component {
     }
   }
 
+  changeStatusAnswers() {
+    this.setState({
+      correctAnswer: 'green-border',
+      incorrectAnswer: 'red-border',
+      disabled: true,
+      hideNextButton: '',
+    });
+  }
+
+  correctAnswer() {
+    const { questions } = this.props;
+    const { correctAnswer, disabled, questionIndex } = this.state;
+    return (
+      <li key="6">
+        <button
+          type="button"
+          data-testid="correct-answer"
+          disabled={disabled}
+          className={`answer-button ${correctAnswer}`}
+          onClick={() => this.changeStatusAnswers()}
+        >
+          {questions[questionIndex].correct_answer}
+        </button>
+      </li>
+    );
+  }
+
+  incorrectAnswers(answer, index) {
+    const { incorrectAnswer, disabled } = this.state;
+    return (
+      <li key={index}>
+        <button
+          type="button"
+          data-testid={`wrong-answer-${index}`}
+          disabled={disabled}
+          className={`answer-button ${incorrectAnswer}`}
+          onClick={() => this.changeStatusAnswers()}
+        >
+          {answer}
+        </button>
+      </li>
+    );
+  }
+
   randomAnswers() {
     const { questions } = this.props;
     const { randomIndexes, questionIndex } = this.state;
-    const answers = questions[questionIndex].incorrect_answers.map((answer) => answer);
-    answers.splice(randomIndexes[questionIndex], 0, questions[questionIndex].correct_answer);
+    const answers = questions[questionIndex].incorrect_answers
+      .map((answer, index) => this.incorrectAnswers(answer, index));
+    answers.splice(randomIndexes[questionIndex], 0, this.correctAnswer());
     return answers;
   }
 
@@ -36,6 +85,37 @@ class Game extends Component {
     const index = Object.values(questions)
       .map((question) => getRandomIndex(question.incorrect_answers.length));
     this.setState({ randomIndexes: index });
+  }
+
+  nextQuestion() {
+    const { questionIndex } = this.state;
+    const { history } = this.props;
+    if (questionIndex === 4) {
+      history.push('/feedback');
+    } else {
+      this.setState({
+        timer: 30,
+        questionIndex: questionIndex + 1,
+        correctAnswer: '',
+        incorrectAnswer: '',
+        disabled: false,
+        hideNextButton: 'hide',
+      });
+    }
+  }
+
+  buttonNext() {
+    const { hideNextButton } = this.state;
+    return (
+      <button
+        type="button"
+        data-testid="btn-next"
+        onClick={() => this.nextQuestion()}
+        className={`btn-next ${hideNextButton}`}
+      >
+        NEXT
+      </button>
+    );
   }
 
   render() {
@@ -47,14 +127,15 @@ class Game extends Component {
         <Header />
         <div>
           <div>
-            <h3>{questions[questionIndex].question}</h3>
+            <h3 data-testid="question-category">{questions[questionIndex].category}</h3>
+            <h4 data-testid="question-text">{questions[questionIndex].question}</h4>
             {console.log(questions[questionIndex].correct_answer)}
             {console.log(randomIndexes)}
             {console.log(this.randomAnswers())}
-            {this.randomAnswers().map((answer) => (
-              answer === questions[questionIndex].correct_answer ?
-                <p><b>{answer}</b></p> : <p>{answer}</p>
-            ))}
+            <ul>
+              {this.randomAnswers()}
+            </ul>
+            {this.buttonNext()}
           </div>
         </div>
       </div>
@@ -68,6 +149,7 @@ const mapState = (state) => ({
 
 Game.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.object).isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default connect(mapState)(Game);

@@ -1,18 +1,47 @@
+body {
+  margin: 2px;
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 9vmin;
   pointer-events: none;
 }
 
 .red-border {
-  border: 1px solid red;
+  border: 3px solid red;
 }
 
 .green-border {
-  border: 1px solid green;
+  border: 3px solid rgb(6, 240, 15);
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.answer-button {
+  background-color: white;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 900;
+  margin-bottom: 10px;
+  padding: 7px 12px;
+  width: 300px;
+}
+
+ul {
+  list-style: none;
+}
+
+.btn-next {
+  cursor: pointer;
+  margin-left: 60px;
+  padding: 7px 12px;
+  width: 200px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -22,18 +51,71 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: rgb(14, 79, 153);
+  color: white;
+  height: 11vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+}
+
+.App-content {
+  min-height: 82vh;
+  padding-top: 7px;
+}
+
+.App-footer {
+  background-color: rgb(161, 179, 199);
+  padding: 3px 5px;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.developed-by {
+  font-size: 14pt;
+  font-weight: 900;
+}
+
+.div-login {
+  margin: auto;
+  text-align: right;
+  width: 400px;
+}
+
+.div-inputs-login {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.span-login {
+  padding: 5px 6px;
+}
+
+.input-login {
+  padding: 4px 5px;
+}
+
+.label-login {
+  display: inline-block;
+  padding-right: 10px;
+  text-align: center  ;
+  width: 80px;
+}
+
+.img-settings {
+  width: 40px;
+}
+
+.btn-login {
+  cursor: pointer;
+  margin: 10px auto;
+  padding: 3px 1px;
+  text-align: center;
+  width: 100px;
 }
 
 @keyframes shake {

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import fetchToken from '../actions';
 import { userLogin } from '../actions/userAction';
+import imggears from '../gears.png';
 
 class Login extends Component {
   constructor(props) {
@@ -36,8 +37,8 @@ class Login extends Component {
   renderInputEmail() {
     const { gravatarEmail } = this.state;
     return (
-      <span>
-        <label htmlFor="input-gravatar-email">Email</label>
+      <span className="span-login">
+        <label htmlFor="input-gravatar-email" className="label-login">Email</label>
         <input
           id="input-gravatar-email"
           onChange={(e) => this.handleChange(e, 'gravatarEmail')}
@@ -45,6 +46,8 @@ class Login extends Component {
           type="text"
           value={gravatarEmail}
           required
+          size="30"
+          className="input-login"
         />
       </span>
     );
@@ -53,8 +56,8 @@ class Login extends Component {
   renderInputName() {
     const { name } = this.state;
     return (
-      <span>
-        <label htmlFor="input-name">User</label>
+      <span className="span-login">
+        <label htmlFor="input-name" className="label-login">User</label>
         <input
           id="input-name"
           onChange={(e) => this.handleChange(e, 'name')}
@@ -62,6 +65,8 @@ class Login extends Component {
           type="text"
           value={name}
           required
+          size="30"
+          className="input-login"
         />
       </span>
     );
@@ -70,21 +75,27 @@ class Login extends Component {
   render() {
     const { disableButton } = this.state;
     return (
-      <div>
-        <Link to="/settings" data-testid="btn-settings">Settings</Link>
-        <br />
-        {this.renderInputName()}
-        {this.renderInputEmail()}
-        <Link to="/game">
-          <button
-            type="button"
-            data-testid="btn-play"
-            disabled={disableButton}
-            onClick={() => this.fetchUser()}
-          >
-            Login
-          </button>
+      <div className="div-login">
+        <Link to="/settings" data-testid="btn-settings">
+          <img src={imggears} className="img-settings" alt="settings" />
         </Link>
+        <div className="div-inputs-login">
+          {this.renderInputName()}
+          {this.renderInputEmail()}
+        </div>
+        <div className="btn-login">
+          <Link to="/game">
+            <button
+              type="button"
+              data-testid="btn-play"
+              disabled={disableButton}
+              onClick={() => this.fetchUser()}
+              className="btn-login"
+            >
+              Login
+            </button>
+          </Link>
+        </div>
       </div>
     );
   }
