@@ -19,7 +19,8 @@ class Header extends Component {
     return (
       <header className="header-feedback-and-game">
         <div>
-          <img src={this.setGravatar()} className="img-from-gravatar"
+          <img
+            src={this.setGravatar()} className="img-from-gravatar"
             alt="User gravatar" data-testid="header-profile-picture"
           />
           <span data-testid="header-player-name" className="player-name">{name}</span>

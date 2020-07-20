@@ -1,9 +1,9 @@
 .game-container {
+  background: rgb(138, 233, 167);
+  box-shadow: 0 0 20px 0 rgb(47, 185, 81), 0 5px 5px 0 rgb(11, 95, 30);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  background: rgb(138, 233, 167);
-  box-shadow: 0 0 20px 0 rgb(47, 185, 81), 0 5px 5px 0 rgb(11, 95, 30);
   margin: 0 auto 100px;
   max-width: 360px;
   padding: 45px;
@@ -26,8 +26,8 @@
   width: 100%;
 }
 
-.game-container button:hover ,
-.game-container button:active,
+.game-container button:hover , 
+.game-container button:active , 
 .game-container button:focus {
   background: #8adfb4;
 }
