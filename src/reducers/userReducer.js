@@ -36,10 +36,9 @@ const setScorePlayerStorage = (state, action) =>
   );
 
 const userReducer = (state = initialState, action) => {
-  console.log(action)
   switch (action.type) {
     case USER_LOGIN:
-      setLoginPlayerStorage(state = initialState, action);
+      setLoginPlayerStorage(state, action);
       return {
         ...state,
         player: {
@@ -49,7 +48,7 @@ const userReducer = (state = initialState, action) => {
         },
       };
     case USER_SCORE:
-      setScorePlayerStorage(state = initialState, action);
+      setScorePlayerStorage(state, action);
       return {
         ...state,
         player: { ...state.player, score: action.infos.score, assertions: action.infos.assertions },
