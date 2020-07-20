@@ -22,7 +22,7 @@ class Header extends Component {
           <h2 data-testid="header-player-name">Jogador: {name}</h2>
         </div>
         <div className="right-header">
-          <p data-testid="header-score">Score: {score}</p>
+          <p data-testid="header-score">Score: {Number(score)}</p>
         </div>
       </div>
     );

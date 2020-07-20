@@ -3,31 +3,31 @@ import { USER_LOGIN, USER_SCORE } from '../actions/types';
 const initialState = {
   player: {
     name: '',
-    assertions: 3,
+    assertions: 0,
     score: 0,
     gravatarEmail: '',
   },
 };
 
-const userReducer = (state = initialState, { type, player }) => {
-  switch (type) {
+const userReducer = (state = initialState, action) => {
+  switch (action.type) {
     case USER_LOGIN:
       localStorage.setItem('player', JSON.stringify({
         ...state,
-        player: { ...state.player, name: player.name, gravatarEmail: player.gravatarEmail },
+        player: { ...state.player, name: action.player.name, gravatarEmail: action.player.gravatarEmail },
       }));
       return {
         ...state,
-        player: { ...state.player, name: player.name, gravatarEmail: player.gravatarEmail },
+        player: { ...state.player, name: action.player.name, gravatarEmail: action.player.gravatarEmail },
       };
     case USER_SCORE:
       localStorage.setItem('player', JSON.stringify({
         ...state,
-        player: { ...state.player, score: player.score, assertions: player.assertions },
+        player: { ...state.player, score: action.infos.score, assertions: action.infos.assertions },
       }));
       return {
         ...state,
-        player: { ...state.player, score: player.score, assertions: player.assertions },
+        player: { ...state.player, score: action.infos.score, assertions: action.infos.assertions },
       };
     default:
       return state;

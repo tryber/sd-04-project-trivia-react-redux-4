@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from './pagesComponents/Header';
+import { userScore } from '../actions/userAction';
 
 const getRandomIndex = (length) => Math.round(Math.random() * length);
 
@@ -17,7 +18,13 @@ class Game extends Component {
       incorrectAnswer: '',
       disabled: false,
       hideNextButton: 'hide',
+      remainingTime: 0,
+      assertions: 0,
     };
+  }
+
+  componentDidMount() {
+    this.timerInit();
   }
 
   componentDidUpdate(prevProps) {
@@ -25,6 +32,20 @@ class Game extends Component {
     if (questions !== prevProps.questions && questions.length) {
       this.createAnswerIndexes();
     }
+  }
+
+  addAssertions() {
+    const { player } = this.props;
+    return player.assertions + 1;
+  }
+
+  calculateScore() {
+    const { timer, assertions, questionIndex } = this.state;
+    const { difficulty } = this.props.questions[questionIndex];
+    const { player } = this.props;
+    const dif = { hard: 3, medium: 2, easy: 1};
+    console.log(difficulty);
+    return player.score + (10 + (timer * dif[difficulty]));
   }
 
   timerInit() {
@@ -38,20 +59,23 @@ class Game extends Component {
         this.changeStatusAnswers();
       }
     }, 1000);
+    this.setState({ remainingTime });
   }
 
   changeStatusAnswers() {
+    const { remainingTime } = this.state;
     this.setState({
       correctAnswer: 'green-border',
       incorrectAnswer: 'red-border',
       disabled: true,
       hideNextButton: '',
     });
+    clearInterval(remainingTime);
   }
 
   correctAnswer() {
-    const { questions } = this.props;
-    const { correctAnswer, disabled, questionIndex } = this.state;
+    const { questions, userScore } = this.props;
+    const { correctAnswer, disabled, questionIndex, assertions } = this.state;
     return (
       <li key="6">
         <button
@@ -59,7 +83,10 @@ class Game extends Component {
           data-testid="correct-answer"
           disabled={disabled}
           className={`answer-button ${correctAnswer}`}
-          onClick={() => this.changeStatusAnswers()}
+          onClick={() => {
+            this.changeStatusAnswers();
+            userScore({ score: this.calculateScore(), assertions: this.addAssertions() });
+          }}
         >
           {questions[questionIndex].correct_answer}
         </button>
@@ -114,6 +141,7 @@ class Game extends Component {
         disabled: false,
         hideNextButton: 'hide',
       });
+      this.timerInit();
     }
   }
 
@@ -133,7 +161,7 @@ class Game extends Component {
 
   render() {
     const { questions } = this.props;
-    const { questionIndex, randomIndexes } = this.state;
+    const { questionIndex, randomIndexes, timer, remainingTime } = this.state;
     if (questions.length < 1) return <div>Loading...</div>;
     return (
       <div>
@@ -142,12 +170,11 @@ class Game extends Component {
           <div>
             <h3 data-testid="question-category">{questions[questionIndex].category}</h3>
             <h4 data-testid="question-text">{questions[questionIndex].question}</h4>
-            {console.log(questions[questionIndex].correct_answer)}
-            {console.log(randomIndexes)}
-            {console.log(this.randomAnswers())}
+            {timer}
             <ul>
               {this.randomAnswers()}
             </ul>
+            {questions[questionIndex].correct_answer}
             {this.buttonNext()}
           </div>
         </div>
@@ -158,11 +185,16 @@ class Game extends Component {
 
 const mapState = (state) => ({
   questions: state.apiReducer.questions,
+  player: state.userReducer.player,
 });
+
+const mapDispatch = (dispatch) => ({
+  userScore: (score) => dispatch(userScore(score)),
+})
 
 Game.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.object).isRequired,
   history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default connect(mapState)(Game);
+export default connect(mapState, mapDispatch)(Game);
