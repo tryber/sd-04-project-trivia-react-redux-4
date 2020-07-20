@@ -27,6 +27,19 @@ class Game extends Component {
     }
   }
 
+  timerInit() {
+    const remainingTime = setInterval(() => {
+      const { timer } = this.state;
+      if (timer > 0) {
+        this.setState((state) => ({ timer: state.timer - 1 }));
+      }
+      else {
+        clearInterval(remainingTime);
+        this.changeStatusAnswers();
+      }
+    }, 1000);
+  }
+
   changeStatusAnswers() {
     this.setState({
       correctAnswer: 'green-border',
