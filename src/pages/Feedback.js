@@ -22,7 +22,7 @@ class Feedback extends Component {
           <p data-testid="feedback-total-question">Você acertou {assertions} questões!</p>
           <p data-testid="feedback-total-score">Um total de {score} pontos</p>
         </div>
-        <button><Link to="/ranking" data-testid="tbn-ranking">Ver Ranking</Link></button>
+        <button><Link to="/ranking" data-testid="btn-ranking">Ver Ranking</Link></button>
         <button><Link to="/" data-testid="btn-play-again">Jogar Novamente</Link></button>
       </div>
     );
