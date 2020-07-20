@@ -84,7 +84,7 @@ class Game extends Component {
           className={`answer-button ${correctAnswer}`}
           onClick={() => {
             this.changeStatusAnswers();
-            userScore({ score: this.calculateScore(), assertions: this.addAssertions() });
+            this.props.userScore({ score: this.calculateScore(), assertions: this.addAssertions() });
           }}
         >
           {questions[questionIndex].correct_answer}
@@ -195,6 +195,7 @@ Game.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.object).isRequired,
   history: PropTypes.objectOf(PropTypes.any).isRequired,
   player: PropTypes.objectOf(PropTypes.any).isRequired,
+  userScore: PropTypes.func.isRequired,
 };
 
 export default connect(mapState, mapDispatch)(Game);
