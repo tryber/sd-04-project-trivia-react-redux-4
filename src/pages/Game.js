@@ -40,7 +40,7 @@ class Game extends Component {
   }
 
   calculateScore() {
-    const { timer, assertions, questionIndex } = this.state;
+    const { timer, questionIndex } = this.state;
     const { difficulty } = this.props.questions[questionIndex];
     const { player } = this.props;
     const dif = { hard: 3, medium: 2, easy: 1 };
