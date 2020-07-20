@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import RankList from './pagesComponents/RankList';
 
-const Ranking = (pros) => {
+const Ranking = () => {
   const rankLine =
     localStorage.getItem('ranking') !== null
       ? JSON.parse(localStorage.getItem('player'))
@@ -16,8 +14,6 @@ const Ranking = (pros) => {
         {rankLine.map((player, index) => (
           <RankList key={player.id} player={player} index={index} />
         ))}
-        <p>{name}</p>
-        <p>{score}</p>
       </div>
 
       <Link data-testid="btn-go-home" to="/">
