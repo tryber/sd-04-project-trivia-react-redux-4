@@ -9,30 +9,46 @@ const initialState = {
   },
 };
 
+const setLoginPlayerStorage = (state, action) =>
+  localStorage.setItem(
+    'player',
+    JSON.stringify({
+      ...state,
+      player: {
+        ...state.player,
+        name: action.player.name,
+        gravatarEmail: action.player.gravatarEmail,
+      },
+    }),
+  );
+
+const setScorePlayerStorage = (state, action) =>
+  localStorage.setItem(
+    'player',
+    JSON.stringify({
+      ...state,
+      player: {
+        ...state.player,
+        score: action.infos.score,
+        assertions: action.infos.assertions,
+      },
+    }),
+  );
+
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case USER_LOGIN:
-      localStorage.setItem(
-        'player',
-        JSON.stringify({
-          ...state,
-          player: { ...state.player, name: action.player.name,
-            gravatarEmail: action.player.gravatarEmail,
-          },
-        }),
-      );
+      setLoginPlayerStorage(state, action);
       return {
-        ...state, player: { ...state.player, name: action.player.name,
+        ...state,
+        player: {
+          ...state.player,
+          name: action.player.name,
           gravatarEmail: action.player.gravatarEmail,
         },
       };
     case USER_SCORE:
-      localStorage.setItem('player', JSON.stringify({
-          ...state,
-          player: { ...state.player, score: action.infos.score, assertions: action.infos.assertions,
-          },
-        }),
-      );
+      setScorePlayerStorage(state, action);
       return {
         ...state,
         player: { ...state.player, score: action.infos.score, assertions: action.infos.assertions },
