@@ -1,10 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import MD5 from 'crypto-js/md5';
 import PropTypes from 'prop-types';
 import Header from './pagesComponents/Header';
 
 class Feedback extends Component {
+  componentDidMount() {
+    const { name, score } = this.props.player;
+    const picture = this.setGravatar();
+    const oldState = JSON.parse(localStorage.getItem('ranking'));
+    const newState = { name, score, picture, id: new Date() };
+    if (oldState) return localStorage.setItem('ranking', JSON.stringify([...oldState, newState]));
+    return localStorage.setItem('ranking', JSON.stringify([newState]));
+  }
+
+  setGravatar() {
+    const { gravatarEmail } = this.props.player;
+    const gravatarUrl = 'https://www.gravatar.com/avatar/';
+    const Hash = MD5(gravatarEmail.trim().toLowerCase());
+    return `${gravatarUrl}${Hash}`;
+  }
+
   handleFeedback() {
     const { assertions } = this.props.player;
     if (assertions >= 3) return 'Mandou bem!';
