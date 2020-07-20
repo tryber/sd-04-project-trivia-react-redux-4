@@ -26,8 +26,10 @@
   width: 100%;
 }
 
-.game-container button:hover , 
-.game-container button:active , 
+.game-container button:hover , .game-container button:active {
+  background: #8adfb4;
+}
+
 .game-container button:focus {
   background: #8adfb4;
 }
