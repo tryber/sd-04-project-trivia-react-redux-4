@@ -45,7 +45,7 @@ class Game extends Component {
     const { player } = this.props;
     const dif = { hard: 3, medium: 2, easy: 1 };
     console.log(difficulty);
-    return player.score + (10 + timer * dif[difficulty]);
+    return player.score + (10 + (timer * dif[difficulty]));
   }
 
   timerInit() {
@@ -73,8 +73,8 @@ class Game extends Component {
   }
 
   correctAnswer() {
-    const { questions, userScore } = this.props;
-    const { correctAnswer, disabled, questionIndex, assertions } = this.state;
+    const { questions } = this.props;
+    const { correctAnswer, disabled, questionIndex } = this.state;
     return (
       <li key="6">
         <button
@@ -162,7 +162,7 @@ class Game extends Component {
 
   render() {
     const { questions } = this.props;
-    const { questionIndex, randomIndexes, timer, remainingTime } = this.state;
+    const { questionIndex, timer } = this.state;
     if (questions.length < 1) return <div>Loading...</div>;
     return (
       <div>
