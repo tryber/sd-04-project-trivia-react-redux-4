@@ -44,7 +44,6 @@ class Game extends Component {
     const { difficulty } = this.props.questions[questionIndex];
     const { player } = this.props;
     const dif = { hard: 3, medium: 2, easy: 1 };
-    console.log(difficulty);
     return player.score + (10 + (timer * dif[difficulty]));
   }
 
@@ -73,7 +72,7 @@ class Game extends Component {
   }
 
   correctAnswer() {
-    const { questions } = this.props;
+    const { questions, userScore } = this.props;
     const { correctAnswer, disabled, questionIndex } = this.state;
     return (
       <li key="6">
@@ -84,7 +83,9 @@ class Game extends Component {
           className={`answer-button ${correctAnswer}`}
           onClick={() => {
             this.changeStatusAnswers();
-            this.props.userScore({ score: this.calculateScore(), assertions: this.addAssertions() });
+            this.props.userScore(
+              { score: this.calculateScore(), assertions: this.addAssertions() }
+            );
           }}
         >
           {questions[questionIndex].correct_answer}
