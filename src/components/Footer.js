@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 class Footer extends Component {
   render() {
     return (
-      <div className="footer">
-        <h3>Elaborado por:</h3>
-        <p>Jéssica Tavares, Henrique Baeta e Orlando Messias</p>
+      <div className="App-footer">
+        <span className="developed-by">Elaborado por: </span>
+        <span>Jéssica Tavares, Henrique Baeta e Orlando Messias</span>
       </div>
     );
   }
