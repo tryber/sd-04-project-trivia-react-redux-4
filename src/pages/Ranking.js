@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import RankList from './pagesComponents/RankList';
 
-const Ranking = (props) => {
-  const { name, score } = props;
+const Ranking = (pros) => {
   const rankLine =
     localStorage.getItem('ranking') !== null
       ? JSON.parse(localStorage.getItem('player'))
@@ -28,14 +27,4 @@ const Ranking = (props) => {
   );
 };
 
-const mapState = (state) => ({
-  name: state.userReducer.player.name,
-  score: state.userReducer.player.score,
-});
-
-Ranking.propTypes = {
-  name: PropTypes.string.isRequired,
-  score: PropTypes.number.isRequired,
-};
-
-export default connect(mapState)(Ranking);
+export default Ranking;
