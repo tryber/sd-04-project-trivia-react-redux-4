@@ -11,7 +11,7 @@ const initialState = {
 
 const setLoginPlayerStorage = (state, action) =>
   localStorage.setItem(
-    'player',
+    'state',
     JSON.stringify({
       ...state,
       player: {
@@ -24,7 +24,7 @@ const setLoginPlayerStorage = (state, action) =>
 
 const setScorePlayerStorage = (state, action) =>
   localStorage.setItem(
-    'player',
+    'state',
     JSON.stringify({
       ...state,
       player: {
