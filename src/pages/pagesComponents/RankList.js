@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function RankList({ player }) {
+const RankList = ({ player }) => {
   return (
     <div>
       <img src={player.picture} alt="gravatar" />
@@ -9,7 +9,7 @@ function RankList({ player }) {
       <p>{player.score}</p>
     </div>
   );
-}
+};
 
 RankList.propTypes = {
   player: PropTypes.arrayOf(PropTypes.string).isRequired,
