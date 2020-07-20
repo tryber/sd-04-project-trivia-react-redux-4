@@ -72,7 +72,7 @@ class Game extends Component {
   }
 
   correctAnswer() {
-    const { questions, userScore } = this.props;
+    const { questions } = this.props;
     const { correctAnswer, disabled, questionIndex } = this.state;
     return (
       <li key="6">
@@ -84,7 +84,7 @@ class Game extends Component {
           onClick={() => {
             this.changeStatusAnswers();
             this.props.userScore(
-              { score: this.calculateScore(), assertions: this.addAssertions() }
+              { score: this.calculateScore(), assertions: this.addAssertions() },
             );
           }}
         >
