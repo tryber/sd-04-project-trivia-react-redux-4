@@ -24,22 +24,14 @@ const userReducer = (state = initialState, action) => {
         }),
       );
       return {
-        ...state,
-        player: {
-          ...state.player,
-          name: action.player.name,
+        ...state, player: { ...state.player, name: action.player.name,
           gravatarEmail: action.player.gravatarEmail,
         },
       };
     case USER_SCORE:
-      localStorage.setItem(
-        'player',
-        JSON.stringify({
+      localStorage.setItem('player', JSON.stringify({
           ...state,
-          player: {
-            ...state.player,
-            score: action.infos.score,
-            assertions: action.infos.assertions,
+          player: { ...state.player, score: action.infos.score, assertions: action.infos.assertions,
           },
         }),
       );
