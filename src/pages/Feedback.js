@@ -18,8 +18,8 @@ class Feedback extends Component {
         <Header />
         <div>
           <h1 data-testid="feedback-text">{this.handleFeedback()}</h1>
-          <p data-testid="feedback-total-question">Você acertou {assertions} questões!</p>
-          <p data-testid="feedback-total-score">Um total de {score} pontos</p>
+          <p>Você acertou <span data-testid="feedback-total-question">{assertions}</span> questões!</p>
+          <p>Um total de <span data-testid="feedback-total-score">{score}</span> pontos</p>
         </div>
         <Link to="/ranking"><button data-testid="btn-ranking">Ver Ranking</button></Link>
         <Link to="/"><button data-testid="btn-play-again">Jogar Novamente</button></Link>
