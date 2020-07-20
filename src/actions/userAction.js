@@ -8,5 +8,5 @@ export const userLogin = (infos) => ({
 
 export const userScore = (infos) => ({
   type: USER_SCORE,
-  player: infos,
+  infos,
 });
