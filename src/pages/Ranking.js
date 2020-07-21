@@ -25,7 +25,7 @@ class Ranking extends React.Component {
         </div>
 
         <Link data-testid="btn-go-home" to="/">
-          <button onClick={() => userScore(restart)}>Home</button>
+          <button onClick={() => this.props.userScore(restart)}>Home</button>
         </Link>
       </div>
     );
