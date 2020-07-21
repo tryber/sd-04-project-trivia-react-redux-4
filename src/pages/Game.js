@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from './pagesComponents/Header';
 import { userScore } from '../actions/userAction';
+import time from '../timer.png';
 
 const getRandomIndex = (length) => Math.round(Math.random() * length);
 
@@ -20,6 +21,7 @@ class Game extends Component {
       hideNextButton: 'hide',
       remainingTime: 0,
       assertions: 0,
+      finishedTime: '',
     };
   }
 
@@ -54,6 +56,7 @@ class Game extends Component {
         this.setState((state) => ({ timer: state.timer - 1 }));
       } else {
         clearInterval(remainingTime);
+        this.setState({ finishedTime: 'finished-time' });
         this.changeStatusAnswers();
       }
     }, 1000);
@@ -142,6 +145,7 @@ class Game extends Component {
         incorrectAnswer: '',
         disabled: false,
         hideNextButton: 'hide',
+        finishedTime: '',
       });
       this.timerInit();
     }
@@ -163,7 +167,7 @@ class Game extends Component {
 
   render() {
     const { questions } = this.props;
-    const { questionIndex, timer } = this.state;
+    const { questionIndex, timer, finishedTime } = this.state;
     if (questions.length < 1) return <div>Loading...</div>;
     return (
       <div>
@@ -172,10 +176,12 @@ class Game extends Component {
           <div>
             <h3 data-testid="question-category">{questions[questionIndex].category}</h3>
             <h4 data-testid="question-text">{questions[questionIndex].question}</h4>
-            {timer}
             <ul>{this.randomAnswers()}</ul>
-            {questions[questionIndex].correct_answer}
-            {this.buttonNext()}
+            <div className="div-btn-next">
+              {this.buttonNext()}
+              <img src={time} className="img-time" alt="time"/>
+              <span className={finishedTime}>00:{timer}</span>
+            </div>
           </div>
         </div>
       </div>
