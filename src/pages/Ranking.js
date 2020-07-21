@@ -9,7 +9,7 @@ function rankLine() {
   return localStorage.getItem('ranking') !== null
     ? JSON.parse(localStorage.getItem('ranking'))
     : { player: { name: '', score: '', picture: '' } };
-};
+}
 
 class Ranking extends React.Component {
   render() {
