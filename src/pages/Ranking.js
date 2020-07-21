@@ -13,11 +13,7 @@ const Ranking = () => {
         <h2 data-testid="ranking-title">Ranking</h2>
         {rankLine
           .map((player, index) => <RankList key={player.id} player={player} index={index} />)
-          .sort((a, b) => {
-            if (a.player.score > b.player.score) return 1;
-            if (a.player.score < b.player.score) return -1;
-            return 0;
-          })}
+          .sort((a, b) => b.player.score - a.player.score)}
       </div>
 
       <Link data-testid="btn-go-home" to="/">
