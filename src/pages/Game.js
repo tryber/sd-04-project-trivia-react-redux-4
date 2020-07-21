@@ -179,7 +179,7 @@ class Game extends Component {
             <ul>{this.randomAnswers()}</ul>
             <div className="div-btn-next">
               {this.buttonNext()}
-              <img src={time} className="img-time" alt="time"/>
+              <img src={time} className="img-time" alt="time" />
               <span className={finishedTime}>00:{timer}</span>
             </div>
           </div>

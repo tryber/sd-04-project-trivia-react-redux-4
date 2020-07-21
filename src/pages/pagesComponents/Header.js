@@ -22,7 +22,7 @@ class Header extends Component {
             src={this.setGravatar()}
             alt="User gravatar"
             data-testid="header-profile-picture"
-            className="img-header"  
+            className="img-header"
           />
           <h3 data-testid="header-player-name">{name}</h3>
           <p>Score: <span data-testid="header-score" className="score">{score}</span></p>
