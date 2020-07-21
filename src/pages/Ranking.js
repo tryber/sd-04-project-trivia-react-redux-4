@@ -6,7 +6,7 @@ import RankList from './pagesComponents/RankList';
 import { userScore } from '../actions/userAction';
 
 class Ranking extends React.Component {
-  rankLine() {
+  static rankLine() {
     return localStorage.getItem('ranking') !== null
       ? JSON.parse(localStorage.getItem('ranking'))
       : { player: { name: '', score: '', picture: '' } };
@@ -30,7 +30,7 @@ class Ranking extends React.Component {
       </div>
     );
   }
-};
+}
 
 const mapDispatch = (dispatch) => ({
   userScore: (score) => dispatch(userScore(score)),
