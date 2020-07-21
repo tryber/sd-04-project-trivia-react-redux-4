@@ -118,6 +118,43 @@ ul {
   width: 100px;
 }
 
+.header-game {
+  align-items: center;
+  background-color: rgb(86, 86, 117);
+  border-radius: 20px;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  width: 500px;
+}
+
+.img-header {
+  border: 2px solid white;
+  border-radius: 40px;
+}
+
+.img-time {
+  margin-left: 50px;
+  width: 30px;
+}
+
+.div-btn-next {
+  align-items: center;
+  display: flex;
+  margin: auto;
+  width: 300px;
+}
+
+.finished-time {
+  color: red;
+  font-weight: 900;
+}
+
+.score {
+  font-weight: 900;
+}
+
 @keyframes shake {
   10%, 90% {
     transform: translate3d(-1px, 0, 0);

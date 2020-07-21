@@ -17,12 +17,15 @@ class Header extends Component {
     console.log(this.setGravatar());
     return (
       <div>
-        <div className="left-header">
-          <img src={this.setGravatar()} alt="User gravatar" data-testid="header-profile-picture" />
-          <h2 data-testid="header-player-name">Jogador: {name}</h2>
-        </div>
-        <div className="right-header">
-          <p>Score: <span data-testid="header-score">{score}</span></p>
+        <div className="header-game">
+          <img
+            src={this.setGravatar()}
+            alt="User gravatar"
+            data-testid="header-profile-picture"
+            className="img-header"
+          />
+          <h3 data-testid="header-player-name">{name}</h3>
+          <p>Score: <span data-testid="header-score" className="score">{score}</span></p>
         </div>
       </div>
     );
