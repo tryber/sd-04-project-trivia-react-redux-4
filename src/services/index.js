@@ -9,3 +9,9 @@ export async function getTrivia(token) {
 export async function requestTokenService() {
   return fetch(urlRequestToken).then((token) => token.json().then((json) => getTrivia(json.token)));
 }
+
+export async function getCategories() {
+  return fetch('https://opentdb.com/api_category.php').then((resp) =>
+    resp.json().then((json) => (resp.ok ? Promise.resolve(json) : Promise.reject(json))),
+  );
+}

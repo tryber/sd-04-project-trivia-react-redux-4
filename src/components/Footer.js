@@ -14,7 +14,7 @@ class Footer extends Component {
             Jéssica Tavares,
           </a>{' '}
           <a
-            href="https://www.linkedin.com/in/orlando-messias-a5b7644b/"
+            href="https://www.linkedin.com/in/henrique-ba%C3%AAta-leite-785a4b15a/"
             rel="noopener noreferrer"
             target="_blank"
           >
