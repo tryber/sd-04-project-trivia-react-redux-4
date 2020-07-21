@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const RankList = ({ player, index }) => (
   <div>
     <img src={player.picture} alt="gravatar" />
-    <p data-testid={`player-name=${index}`}>{player.name}</p>
+    <p data-testid={`player-name-${index}`}>{player.name}</p>
     <p data-testid={`player-score-${index}`}>{player.score}</p>
   </div>
 );
