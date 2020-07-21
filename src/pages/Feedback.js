@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import MD5 from 'crypto-js/md5';
 import PropTypes from 'prop-types';
 import Header from './pagesComponents/Header';
+import { userScore } from '../actions/userAction';
 
 class Feedback extends Component {
   componentDidMount() {
@@ -30,6 +31,7 @@ class Feedback extends Component {
 
   render() {
     const { score, assertions } = this.props.player;
+    const restart = { score: 0, assertions: 0 };
     return (
       <div>
         <Header />
@@ -41,7 +43,9 @@ class Feedback extends Component {
           <p>Um total de <span data-testid="feedback-total-score">{score}</span> pontos</p>
         </div>
         <Link to="/ranking"><button data-testid="btn-ranking">Ver Ranking</button></Link>
-        <Link to="/"><button data-testid="btn-play-again">Jogar Novamente</button></Link>
+        <Link to="/">
+          <button data-testid="btn-play-again" onClick={() => this.props.userScore(restart)}>Jogar Novamente</button>
+        </Link>
       </div>
     );
   }
@@ -51,8 +55,13 @@ const mapState = (state) => ({
   player: state.userReducer.player,
 });
 
+const mapDispatch = (dispatch) => ({
+  userScore: (score) => dispatch(userScore(score)),
+});
+
 Feedback.propTypes = {
   player: PropTypes.objectOf(PropTypes.any).isRequired,
+  userScore: PropTypes.func.isRequired,
 };
 
-export default connect(mapState)(Feedback);
+export default connect(mapState, mapDispatch)(Feedback);
