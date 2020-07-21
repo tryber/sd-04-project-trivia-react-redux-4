@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 import RankList from './pagesComponents/RankList';
 import { userScore } from '../actions/userAction';
 
-const rankLine = () => {
+function rankLine() {
   return localStorage.getItem('ranking') !== null
     ? JSON.parse(localStorage.getItem('ranking'))
     : { player: { name: '', score: '', picture: '' } };
-}
+};
 
 class Ranking extends React.Component {
   render() {
