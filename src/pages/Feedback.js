@@ -44,7 +44,9 @@ class Feedback extends Component {
         </div>
         <Link to="/ranking"><button data-testid="btn-ranking">Ver Ranking</button></Link>
         <Link to="/">
-          <button data-testid="btn-play-again" onClick={() => this.props.userScore(restart)}>Jogar Novamente</button>
+          <button data-testid="btn-play-again" onClick={() => this.props.userScore(restart)}>
+            Jogar Novamente
+          </button>
         </Link>
       </div>
     );
