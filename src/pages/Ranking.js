@@ -5,32 +5,32 @@ import PropTypes from 'prop-types';
 import RankList from './pagesComponents/RankList';
 import { userScore } from '../actions/userAction';
 
-function rankLine() {
+const rankLine = () => {
   return localStorage.getItem('ranking') !== null
     ? JSON.parse(localStorage.getItem('ranking'))
     : { player: { name: '', score: '', picture: '' } };
-}
+};
 
-class Ranking extends React.Component {
-  render() {
-    const restart = { score: 0, assertions: 0 };
-    const ranking = rankLine();
-    return (
+const Ranking = ({ userScore }) => {
+  const restart = { score: 0, assertions: 0 };
+  const ranking = rankLine();
+  return (
+    <div>
       <div>
-        <div>
-          <h2 data-testid="ranking-title">Ranking</h2>
-          {ranking
-            .sort((a, b) => b.score - a.score)
-            .map((player, index) => <RankList key={player.id} player={player} index={index} />)}
-        </div>
-
-        <Link data-testid="btn-go-home" to="/">
-          <button onClick={() => this.props.userScore(restart)}>Home</button>
-        </Link>
+        <h2 data-testid="ranking-title">Ranking</h2>
+        {ranking
+          .sort((a, b) => b.score - a.score)
+          .map((player, index) => (
+            <RankList key={player.id} player={player} index={index} />
+          ))}
       </div>
-    );
-  }
-}
+
+      <Link data-testid="btn-go-home" to="/">
+        <button onClick={() => userScore(restart)}>Home</button>
+      </Link>
+    </div>
+  );
+};
 
 const mapDispatch = (dispatch) => ({
   userScore: (score) => dispatch(userScore(score)),

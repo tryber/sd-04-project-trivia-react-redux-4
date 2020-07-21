@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { getCategories } from '../services';
 
 class Settings extends Component {
   constructor(props) {
@@ -11,6 +12,15 @@ class Settings extends Component {
     this.selectCategory = this.selectCategory.bind(this);
     this.selectDifficulty = this.selectDifficulty.bind(this);
     this.selectType = this.selectType.bind(this);
+  }
+
+  componentDidMount() {
+    this.setCategories();
+  }
+
+  async setCategories() {
+    const categories = await getCategories();
+    this.setState({ categories: categories.trivia_categories });
   }
 
   selectCategory() {
