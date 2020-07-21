@@ -20,9 +20,7 @@ class Settings extends Component {
 
   async setCategories() {
     const categories = await getCategories();
-    this.setState({
-      categories: categories.trivia_categories,
-    });
+    this.setState({ categories: categories.trivia_categories });
   }
 
   selectCategory() {

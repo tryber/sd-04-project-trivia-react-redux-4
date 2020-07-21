@@ -1,18 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class Content extends Component {
-  render() {
-    return (
-      <div className="App-content">
-        {this.props.children}
-      </div>
-    );
-  }
-}
+const Content = (props) => <div className="App-content">{props.children}</div>;
 
 Content.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.any).isRequired,
+  children: PropTypes.element.isRequired,
 };
 
 export default Content;
